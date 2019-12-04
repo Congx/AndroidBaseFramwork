@@ -1,0 +1,78 @@
+
+ext {
+
+    android = [
+            "compileSdkVersion": 29,
+            "buildToolsVersion": "29.0.2",
+            "applicationId"    : "com.example.androidbaseframwork",
+            "minSdkVersion"    : 21,
+            "targetSdkVersion" : 29,
+            "versionCode"      : 1,
+            "versionName"      : '1.0.0'
+    ]
+
+    libVersion = {
+        rxJava = [
+                "rxJava"   : "2.2.15",
+                "rxAndrood": "2.1.1"
+        ]
+        androidx = [
+                "appcompat"   : "1.1.0",
+                "recyclerview": "1.1.0-beta04"
+        ]
+    }
+    libVersion.call()
+
+    libs = {
+        libsMap = new HashMap<String, String>()
+        rxJava = [
+                "rxjava"   : "io.reactivex.rxjava2:rxjava:${rootProject.ext.libVersion.rxJava.rxJava}",
+                "rxAndrood": "io.reactivex.rxjava2:rxandroid:${rootProject.ext.libVersion.rxJava.rxAndrood}"
+        ]
+
+        androidx = [
+                "appcompat"    : "androidx.appcompat:appcompat:${rootProject.ext.libVersion.androidx.appcompat}",
+                " recyclerview": "androidx.recyclerview:recyclerview:${rootProject.ext.libVersion.androidx.recyclerview}"
+        ]
+
+        rxJavas = rxJava.values()
+        androidxs = androidx.values()
+
+        libsMap.putAll(rxJava)
+        libsMap.putAll(androidx)
+
+        libsAll = libsMap.values()
+
+    }
+    libs.call()
+
+
+    androidClosure = {
+        isLib = false
+        compileSdkVersion rootProject.ext.android.compileSdkVersion
+        buildToolsVersion rootProject.ext.android.buildToolsVersion
+        defaultConfig {
+            if(isLib) {
+                applicationId rootProject.ext.android.applicationId
+            }
+            minSdkVersion rootProject.ext.android.minSdkVersion
+            targetSdkVersion rootProject.ext.android.targetSdkVersion
+            versionCode rootProject.ext.android.versionCode
+            versionName rootProject.ext.android.versionName
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+    }
+
+    androidConfig = { owner ->
+        rootProject.ext.androidClosure.delegate = owner
+        rootProject.ext.androidClosure.call()
+    }
+
+    androidLibConfig = { owner ->
+        isLib = true
+        rootProject.ext.androidClosure.delegate = owner
+        rootProject.ext.androidClosure.call()
+    }
+
+}
+

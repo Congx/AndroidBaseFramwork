@@ -1,2 +1,7 @@
-include ':app'
 rootProject.name='AndroidBaseFramwork'
+
+include ':app'
+
+include "rxjavalib"
+project(":rxjavalib").projectDir = new File("./libs/rxjavalib")
+

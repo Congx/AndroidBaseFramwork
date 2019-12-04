@@ -1,14 +1,21 @@
 package com.example.androidbaseframwork;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.lp.baseandroid.base.BaseItemListActivity;
+import com.lp.baseandroid.base.ItemBean;
 
-import android.os.Bundle;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseItemListActivity {
+
+    private ArrayList<ItemBean> list = new ArrayList<ItemBean>() {
+        {
+            add(new ItemBean("rxJava", MainActivity.class));
+
+        }
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public ArrayList<ItemBean> getListData() {
+        return list;
     }
 }
