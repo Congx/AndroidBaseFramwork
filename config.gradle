@@ -1,4 +1,3 @@
-
 ext {
 
     android = [
@@ -17,30 +16,34 @@ ext {
                 "rxAndrood": "2.1.1"
         ]
         androidx = [
-                "appcompat"   : "1.1.0",
-                "recyclerview": "1.1.0-beta04"
+                "appcompat"       : "1.1.0",
+                "recyclerview"    : "1.1.0-beta04",
+                "constraintlayout": "1.1.3"
         ]
     }
     libVersion.call()
 
     libs = {
         libsMap = new HashMap<String, String>()
+        //单独引用，用这里
         rxJava = [
                 "rxjava"   : "io.reactivex.rxjava2:rxjava:${rootProject.ext.libVersion.rxJava.rxJava}",
                 "rxAndrood": "io.reactivex.rxjava2:rxandroid:${rootProject.ext.libVersion.rxJava.rxAndrood}"
         ]
 
         androidx = [
-                "appcompat"    : "androidx.appcompat:appcompat:${rootProject.ext.libVersion.androidx.appcompat}",
-                " recyclerview": "androidx.recyclerview:recyclerview:${rootProject.ext.libVersion.androidx.recyclerview}"
+                "appcompat"       : "androidx.appcompat:appcompat:${rootProject.ext.libVersion.androidx.appcompat}",
+                "recyclerview"    : "androidx.recyclerview:recyclerview:${rootProject.ext.libVersion.androidx.recyclerview}",
+                "constraintlayout": "androidx.constraintlayout:constraintlayout:${rootProject.ext.libVersion.androidx.constraintlayout}"
         ]
-
+        // 分组引用，用这里
         rxJavas = rxJava.values()
         androidxs = androidx.values()
 
+        //----
         libsMap.putAll(rxJava)
         libsMap.putAll(androidx)
-
+        // 全部引用，用这里
         libsAll = libsMap.values()
 
     }
@@ -52,7 +55,7 @@ ext {
         compileSdkVersion rootProject.ext.android.compileSdkVersion
         buildToolsVersion rootProject.ext.android.buildToolsVersion
         defaultConfig {
-            if(isLib) {
+            if (isLib) {
                 applicationId rootProject.ext.android.applicationId
             }
             minSdkVersion rootProject.ext.android.minSdkVersion
