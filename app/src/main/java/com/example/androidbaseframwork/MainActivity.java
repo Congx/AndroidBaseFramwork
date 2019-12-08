@@ -1,5 +1,6 @@
 package com.example.androidbaseframwork;
 
+import com.example.androidbaseframwork.rxjava.RxbusActivity;
 import com.lp.baseandroid.base.BaseItemListActivity;
 import com.lp.baseandroid.base.ItemBean;
 
@@ -9,7 +10,7 @@ public class MainActivity extends BaseItemListActivity {
 
     private ArrayList<ItemBean> list = new ArrayList<ItemBean>() {
         {
-            add(new ItemBean("rxJava", MainActivity.class));
+            add(new ItemBean("rxJava", RxbusActivity.class));
 
         }
     };
