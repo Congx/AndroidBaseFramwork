@@ -1,30 +1,21 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
+apply plugin: 'com.android.library'
 
 android {
+
     androidConfig(getOwner())
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "androidx.core:core-ktx:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
-
     implementation rootProject.ext.libs.libsAll
-
     implementation project(path: ':rxjavalib')
-    implementation project(path: ':baselib')
-
-}
-repositories {
-    mavenCentral()
 }
