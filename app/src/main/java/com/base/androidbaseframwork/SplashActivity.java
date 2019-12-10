@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 
 import com.base.framwork.activity.BaseActivity;
+import com.example.androidbaseframwork.R;
 
 
 /**
@@ -17,6 +18,14 @@ public class SplashActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        new Handler().postDelayed(()-> startActivity(new Intent(this,MainActivity.class)),2000);
+        new Handler().postDelayed(()-> {
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        },2000);
+    }
+
+    @Override
+    public int getContentLayoutId() {
+        return R.layout.activity_splash;
     }
 }

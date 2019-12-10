@@ -3,6 +3,7 @@ package com.base.androidbaseframwork;
 import android.app.Application;
 
 import com.base.framwork.BuildConfig;
+import com.base.framwork.app.AppActivityLifecycleCallback;
 import com.base.framwork.app.CrashHandler;
 
 /**
@@ -17,5 +18,7 @@ public class MyApp extends Application {
         super.onCreate();
         // 自定义crash处理
         CrashHandler.getInstance().init(this, BuildConfig.DEBUG,true,0,SplashActivity.class);
+        // ActivityLifecycleCallbacks 注册
+        registerActivityLifecycleCallbacks(new AppActivityLifecycleCallback());
     }
 }
