@@ -1,0 +1,8 @@
+# AndroidBaseFramwork
+Android 自己平时用到的一些基础库
+
+### 具有的功能点
+* 原生的ViewModel不具有生命周期，如果在ViewModel中使用RxJava的时候像RxLifecycle那样自动管理Rx的生命周期必须要把Activity/Fragment的
+引用传递给ViewModel,再用compose操作符来管理。第二点就是，RxLifycycle的作者推荐使用AotoDispose来替代生命周期管理，但是AotoDispose在
+使用的时候也是难免逃过LifecycleOwner对象的传递，为了解决这个问题，封装具有生命周期的ViewModel,仿照Fragment/Activity改造ViewModel,
+使ViewModel有完整的生命周期，又具有LifecycleOwner分发生命周期时间的能力
