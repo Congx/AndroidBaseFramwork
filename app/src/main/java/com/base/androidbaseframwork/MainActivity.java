@@ -11,6 +11,7 @@ public class MainActivity extends BaseItemListActivity {
     private ArrayList<ItemBean> list = new ArrayList<ItemBean>() {
         {
             add(new ItemBean("rxJava", RxbusActivity.class));
+            add(new ItemBean("viewmodel", ViewModelActivity.class));
 
         }
     };

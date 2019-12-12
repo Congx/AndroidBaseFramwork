@@ -18,7 +18,8 @@ ext {
         androidx = [
                 "appcompat"       : "1.1.0",
                 "recyclerview"    : "1.1.0-beta04",
-                "constraintlayout": "1.1.3"
+                "constraintlayout": "1.1.3",
+                "lifecycle_version" : "2.1.0"
         ]
     }
     libVersion.call()
@@ -34,7 +35,8 @@ ext {
         androidx = [
                 "appcompat"       : "androidx.appcompat:appcompat:${rootProject.ext.libVersion.androidx.appcompat}",
                 "recyclerview"    : "androidx.recyclerview:recyclerview:${rootProject.ext.libVersion.androidx.recyclerview}",
-                "constraintlayout": "androidx.constraintlayout:constraintlayout:${rootProject.ext.libVersion.androidx.constraintlayout}"
+                "constraintlayout": "androidx.constraintlayout:constraintlayout:${rootProject.ext.libVersion.androidx.constraintlayout}",
+                "lifecycle-extensions": "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.libVersion.androidx.lifecycle_version}"
         ]
         // 分组引用，用这里
         rxJavas = rxJava.values()
