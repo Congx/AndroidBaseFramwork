@@ -1,8 +1,7 @@
 package com.base.framwork.p;
 
-import com.uber.autodispose.AutoDispose;
+import com.base.rxjavalib.RxUtils;
 import com.uber.autodispose.AutoDisposeConverter;
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 
 
 /**
@@ -18,6 +17,6 @@ public class BaseViewModle extends LifyCycleViewModel {
     }
 
     public <T> AutoDisposeConverter<T> bindLifecycle() {
-        return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this));
+        return RxUtils.bindLifecycle(this);
     }
 }
