@@ -13,7 +13,8 @@ ext {
     libVersion = {
         rxJava = [
                 "rxJava"   : "2.2.15",
-                "rxAndrood": "2.1.1"
+                "rxAndrood": "2.1.1",
+                "autodispose": "1.4.0",
         ]
         androidx = [
                 "appcompat"       : "1.1.0",
@@ -27,24 +28,32 @@ ext {
     libs = {
         libsMap = new HashMap<String, String>()
         //单独引用，用这里
+        other = [
+                "leakcanary"   : "com.squareup.leakcanary:leakcanary-android:2.0"
+        ]
         rxJava = [
                 "rxjava"   : "io.reactivex.rxjava2:rxjava:${rootProject.ext.libVersion.rxJava.rxJava}",
-                "rxAndrood": "io.reactivex.rxjava2:rxandroid:${rootProject.ext.libVersion.rxJava.rxAndrood}"
+                "rxAndrood": "io.reactivex.rxjava2:rxandroid:${rootProject.ext.libVersion.rxJava.rxAndrood}",
+                "autodispose": "com.uber.autodispose:autodispose:${rootProject.ext.libVersion.rxJava.autodispose}",
+                "autodispose-android": "com.uber.autodispose:autodispose-android-archcomponents:${rootProject.ext.libVersion.rxJava.autodispose}"
         ]
 
         androidx = [
                 "appcompat"       : "androidx.appcompat:appcompat:${rootProject.ext.libVersion.androidx.appcompat}",
                 "recyclerview"    : "androidx.recyclerview:recyclerview:${rootProject.ext.libVersion.androidx.recyclerview}",
                 "constraintlayout": "androidx.constraintlayout:constraintlayout:${rootProject.ext.libVersion.androidx.constraintlayout}",
-                "lifecycle-extensions": "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.libVersion.androidx.lifecycle_version}"
+                "lifecycle-extensions": "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.libVersion.androidx.lifecycle_version}",
+                "reactivestreams": "androidx.lifecycle:lifecycle-reactivestreams:${rootProject.ext.libVersion.androidx.lifecycle_version}"
         ]
         // 分组引用，用这里
         rxJavas = rxJava.values()
         androidxs = androidx.values()
+        others = other.values()
 
         //----
         libsMap.putAll(rxJava)
         libsMap.putAll(androidx)
+        libsMap.putAll(other)
         // 全部引用，用这里
         libsAll = libsMap.values()
 

@@ -1,8 +1,9 @@
 package com.base.framwork.p;
 
-import android.util.Log;
+import com.uber.autodispose.AutoDispose;
+import com.uber.autodispose.AutoDisposeConverter;
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 
-import androidx.lifecycle.LifecycleEventObserver;
 
 /**
  * @date 2019-12-12
@@ -14,9 +15,9 @@ public class BaseViewModle extends LifyCycleViewModel {
     @Override
     public void onCreate() {
         super.onCreate();
+    }
 
-        getLifecycle().addObserver((LifecycleEventObserver) (source, event) -> {
-            Log.e("BaseViewModle",event.toString());
-        });
+    public <T> AutoDisposeConverter<T> bindLifecycle() {
+        return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this));
     }
 }

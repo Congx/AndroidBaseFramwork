@@ -2,7 +2,6 @@ package com.base.framwork.p;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 
 /**
@@ -30,7 +29,7 @@ public interface ILifecycle extends LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     void onDestroy();
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
-    void onAny(LifecycleOwner owner, Lifecycle.Event event);
+//    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+//    void onAny(LifecycleOwner owner, Lifecycle.Event event);
 
 }

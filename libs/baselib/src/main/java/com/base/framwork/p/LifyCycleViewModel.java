@@ -38,7 +38,7 @@ public class LifyCycleViewModel extends ViewModel implements ILifecycle, Lifecyc
 
     @Override
     public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
-        Log.i(TAG,"viewModel-lifecycle:" + event.toString());
+        Log.i(TAG,"lifecycle:" + event.toString());
         switch (event) {
             case ON_CREATE:
                 onCreate();
@@ -93,9 +93,9 @@ public class LifyCycleViewModel extends ViewModel implements ILifecycle, Lifecyc
 
     }
 
-    @Override
-    public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
-
-    }
+//    @Override
+//    public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
+//
+//    }
 
 }
