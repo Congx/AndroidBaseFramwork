@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_rxbus.*
 
 class RxbusActivity : AppCompatActivity() {
 
-    @SuppressLint("AutoDispose")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rxbus)
