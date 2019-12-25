@@ -12,6 +12,7 @@ public class MainActivity extends BaseItemListActivity {
         {
             add(new ItemBean("rxJava", RxbusActivity.class));
             add(new ItemBean("viewmodel", ViewModelActivity.class));
+            add(new ItemBean("网络", ViewModelActivity.class));
 
         }
     };

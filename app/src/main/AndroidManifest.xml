@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.base.androidbaseframwork.ViewModelActivity"></activity>
+        <activity android:name="com.base.androidbaseframwork.net.NetActivity"></activity>
+        <activity android:name="com.base.androidbaseframwork.ViewModelActivity" />
         <activity android:name="com.base.androidbaseframwork.rxjava.RxbusActivity" />
         <activity android:name="com.base.androidbaseframwork.MainActivity" />
         <activity android:name="com.base.androidbaseframwork.SplashActivity">
