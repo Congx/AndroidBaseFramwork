@@ -9,12 +9,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/BaseTheme.AppTheme">
         <activity android:name="com.base.androidbaseframwork.net.NetActivity"></activity>
         <activity android:name="com.base.androidbaseframwork.ViewModelActivity" />
         <activity android:name="com.base.androidbaseframwork.rxjava.RxbusActivity" />
         <activity android:name="com.base.androidbaseframwork.MainActivity" />
-        <activity android:name="com.base.androidbaseframwork.SplashActivity">
+        <activity android:name="com.base.androidbaseframwork.SplashActivity"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

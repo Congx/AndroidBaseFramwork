@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 android {
 
     androidLibConfig(getOwner())
@@ -15,7 +16,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    // kotlin依赖
+    kotlinDependencies()
     implementation rootProject.ext.libs.libsAll
     implementation project(path: ':rxjavalib')
 }

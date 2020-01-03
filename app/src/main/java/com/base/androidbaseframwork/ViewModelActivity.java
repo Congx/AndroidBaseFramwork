@@ -5,18 +5,13 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
-import com.base.framwork.activity.BaseActivity;
+import com.base.framwork.activity.BaseViewActivity;
 import com.example.androidbaseframwork.R;
 
-import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
-
-public class ViewModelActivity extends BaseActivity<MyViewModel> {
+public class ViewModelActivity extends BaseViewActivity<MyViewModel> {
 
     @NonNull
     @Override
@@ -25,19 +20,18 @@ public class ViewModelActivity extends BaseActivity<MyViewModel> {
     }
 
     @Override
-    public int getContentLayoutId() {
+    public int generateIdLayout() {
         return R.layout.activity_view_model;
     }
 
     @Override
-    protected void initView() {
+    public void initListener() {
 
     }
 
     @Override
-    protected void initData() {
-        // LiveData Transformations相关测试代码
-//        transformationsTest();
+    public void initData() {
+
     }
 
     @Override
@@ -80,6 +74,5 @@ public class ViewModelActivity extends BaseActivity<MyViewModel> {
 //        LiveDataReactiveStreams.fromPublisher()
 //        LiveDataReactiveStreams.toPublisher()
     }
-
 
 }

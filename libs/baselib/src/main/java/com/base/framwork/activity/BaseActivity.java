@@ -1,58 +1,47 @@
 package com.base.framwork.activity;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.base.framwork.p.LifyCycleViewModel;
+import com.base.framwork.R;
+import com.base.framwork.ui.utils.StatusBarUtil;
+import com.base.framwork.view.ILifeProcessor;
 
 /**
- * @date 2019-12-08
+ * @date 2020-01-03
  * @Author luffy
- * @description
+ * @description 规范开发的方法 其他的，暂时还没想好
  */
-public abstract class BaseActivity<T extends LifyCycleViewModel> extends AppCompatActivity {
-
-    protected  T viewModle;
+public abstract class BaseActivity extends AppCompatActivity implements ILifeProcessor{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initParams(savedInstanceState);
-        setContentView(getContentLayoutId());
-        createViewModel();
+        initParams(getIntent());
+        if (generateIdLayout() > 0) {
+            setContentView(generateIdLayout());
+        } else if (generateViewLayout() != null) {
+            setContentView(generateViewLayout());
+        }
+        setStatusBar();
         initView();
         initData();
+        initListener();
     }
 
     /**
-     * 主要是用于初始化intent参数值、savedInstanceState的值
-     * @param savedInstanceState
+     * 跟随主题变色
      */
-    public void initParams(Bundle savedInstanceState) { }
-
-    protected abstract void initView();
-
-    protected abstract void initData();
-
-    @LayoutRes
-    public abstract int getContentLayoutId();
-
-    @NonNull
-    public abstract Class<T> getViewModelClass();
-
-    protected T createViewModel() {
-        viewModle = ViewModelProviders.of(this).get(getViewModelClass());
-        getLifecycle().addObserver(viewModle);
-        return viewModle;
+    @Override
+    public void setStatusBar() {
+        TypedValue typedValue = new TypedValue();
+        boolean b = getTheme().resolveAttribute(R.attr.statuBarColor, typedValue, true);
+        if (b) {
+            int color = typedValue.data;
+            StatusBarUtil.setColor(this, color);
+        }
     }
-
-    public T getViewModel() {
-        return viewModle;
-    }
-
 }
